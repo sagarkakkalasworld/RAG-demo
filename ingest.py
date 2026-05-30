@@ -12,8 +12,6 @@ for file in os.listdir("./incidents"):
         loader = TextLoader(f"./incidents/{file}")
         docs.extend(loader.load())
 
-docs = loader.load()
-
 headers = [
     ("#", "title"),
     ("##", "section")
@@ -43,3 +41,8 @@ vectordb = Chroma.from_documents(
 )
 
 print("Vector DB created successfully")
+
+print(f"Loaded documents: {len(docs)}")
+
+for doc in docs:
+    print(doc.metadata)
